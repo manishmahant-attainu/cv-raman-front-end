@@ -1,9 +1,17 @@
 body {
   background-color: #a6e3e9;
 }
+.divelement {
+  display: inline;
+}
+
+#headings {
+  display: inline;
+  color: #07464a !important;
+}
 
 .headings {
-  color: #24aab1;
+  color: #24aab1 !important;
 }
 
 .anchor-heading {
