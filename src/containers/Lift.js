@@ -5,9 +5,8 @@ import TextInput from '../components/TextInput';
 
 
 //Basic React below topics remains:
+    //Loops & key
     //learn 1 react hook useState
-    //Loops
-    //Key
     //Life Cycle Methods
 const fields = {
     firstName: '',
@@ -15,10 +14,31 @@ const fields = {
     askInstructor: '',
 }
 
+const formFields = [
+    {
+        name: 'firstName',
+        label: 'First Name',
+        type: 'text'
+    },
+    {
+        name: 'lastName',
+        label: 'Last Name',
+        type: 'text'
+    },
+];
+
+// const secret = {
+//     passKey: 'saddkadkasdb'
+// }
+
 export default class Lift extends Component {
     state = {
         ...fields,
-        loading: false
+        loading: false,
+        formFields,
+        fieldName: '',
+        fieldLabel:'',
+        fieldType:''
     }
 
     onTextInputChange = (name, value) => {
@@ -43,10 +63,97 @@ export default class Lift extends Component {
         }, 2000);
     }
 
+    addPhoneNumberField = () => {
+        // this.state.formFields.push({
+        //     name: 'phoneNumber',
+        //     label: 'Phone Number'  
+        // })
+        this.setState({
+            formFields: [ 
+                ...this.state.formFields,
+                {
+                    name: 'phoneNumber',
+                    label: 'Phone Number'  
+                }
+            ]
+        })
+    }
+
+
+    addField = (e) => {
+        e.preventDefault();
+        this.setState({
+            formFields: [ 
+                ...this.state.formFields,
+                {
+                    name: this.state.fieldName,
+                    label: this.state.fieldLabel,
+                    type: this.state.fieldType,
+                }
+            ],
+            fieldName: '',
+            fieldLabel: '',
+            fieldType: '',
+        })
+    }
+
+    renderFormFields = () => {
+        return this.state.formFields.map((v,i) => {
+            let jsx = '';
+            switch (v.type) {
+                case 'text':
+                case 'number':
+                    jsx=<TextInput
+                            type={v.type}
+                            key={i}
+                            name={v.name}
+                            changeHandler={this.onTextInputChange}
+                            value={this.state[v.name] || ''}
+                            label={v.label}
+                            isSubmitting={this.state.loading}
+                        />
+                    break;
+                case v.type:
+                    jsx= v.type
+                    break;
+            
+                default:
+                    jsx=v.type
+                    break;
+            }
+
+            return jsx;
+        })
+    }
+
     render() {
 
         return (
             <>
+                <form onSubmit={this.addField}>
+                    <TextInput
+                        name="fieldLabel"
+                        changeHandler={this.onTextInputChange}
+                        value={this.state.fieldLabel}
+                        label="Field Label"
+                        isSubmitting={this.state.loading}
+                    />
+                    <TextInput
+                        name="fieldName"
+                        changeHandler={this.onTextInputChange}
+                        value={this.state.fieldName}
+                        label="Field Name"
+                        isSubmitting={this.state.loading}
+                    />
+                    <TextInput
+                        name="fieldType"
+                        changeHandler={this.onTextInputChange}
+                        value={this.state.fieldType}
+                        label="Field Type"
+                        isSubmitting={this.state.loading}
+                    />
+                    <button type="submit">Add Field</button>
+                </form>
                 <h1>Lifting Up Of States</h1>
                 <Profile
                     firstName={this.state.firstName}
@@ -55,20 +162,7 @@ export default class Lift extends Component {
                 {
                     // !this.state.loading &&
                     <form onSubmit={this.onFormSubmit}>
-                        <TextInput
-                            name="firstName"
-                            changeHandler={this.onTextInputChange}
-                            value={this.state.firstName}
-                            label="First Name"
-                            isSubmitting={this.state.loading}
-                        />
-                        <TextInput
-                            name="lastName"
-                            changeHandler={this.onTextInputChange}
-                            value={this.state.lastName}
-                            label="Last Name"
-                            isSubmitting={this.state.loading}
-                        />
+                        {this.renderFormFields()}
                         {
                             this.state.firstName.trim() ?
                             <TextInput

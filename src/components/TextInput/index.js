@@ -1,6 +1,6 @@
 const TextInput = (props) => {
 
-    const { changeHandler, name, value, label, isSubmitting } = props;
+    const { changeHandler, name, value, label, isSubmitting, type } = props;
 
 
     const onChangeHandler = (e) => {
@@ -13,7 +13,7 @@ const TextInput = (props) => {
                 {label} :
                 <input
                     id={name}
-                    type="text"
+                    type={type || "text"}
                     name={name}
                     value={value}
                     onChange={onChangeHandler}
