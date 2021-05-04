@@ -58,23 +58,6 @@ export default class Lift extends Component {
         }, 2000);
     }
 
-    addPhoneNumberField = () => {
-        // this.state.formFields.push({
-        //     name: 'phoneNumber',
-        //     label: 'Phone Number'  
-        // })
-        this.setState({
-            formFields: [ 
-                ...this.state.formFields,
-                {
-                    name: 'phoneNumber',
-                    label: 'Phone Number'  
-                }
-            ]
-        })
-    }
-
-
     addField = (e) => {
         e.preventDefault();
         this.setState({
@@ -121,8 +104,16 @@ export default class Lift extends Component {
         })
     }
 
-    render() {
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
 
+    componentDidUpdate() {
+        console.log('componentDidUpdate');
+    }
+
+    render() {
+        console.log('Render & Re-render')
         return (
             <>
                 <form onSubmit={this.addField}>

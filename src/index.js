@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Lift from './containers/LiftFunc';
+import Lift from './containers/Lift';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
