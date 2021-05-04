@@ -3,11 +3,6 @@ import Button from '../components/Button';
 import Profile from '../components/Profile';
 import TextInput from '../components/TextInput';
 
-
-//Basic React below topics remains:
-    //Loops & key
-    //learn 1 react hook useState
-    //Life Cycle Methods
 const fields = {
     firstName: '',
     lastName: '',
