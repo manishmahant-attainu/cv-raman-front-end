@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Lift from './containers/Lift';
+import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Lift pagetitle="React Learning" />,
+    <App/>,
   </React.StrictMode>,
   document.getElementById('roots')
 );
