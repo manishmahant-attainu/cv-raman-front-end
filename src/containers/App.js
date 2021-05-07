@@ -1,19 +1,29 @@
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
-import Home from './Home';
+import routes from '../routes';
+
 import Layout from './Layout';
-import Products from './Products';
 
 const App = () => {
 
     //Is the way to access the route
     //Another is defining the routes
+
+
+    //Reaming things:
+    // 1. Dynamic Routing
+    // 2. Programatical Routing
     return (
         <BrowserRouter>
             <Layout title="hello routes">
                 <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/products" component={Products} />
+                    {
+                        routes.map((route, i) => {
+                            return (
+                                <Route key={i} {...route} />
+                            )
+                        }) 
+                    }
                 </Switch>
             </Layout>
         </BrowserRouter>
