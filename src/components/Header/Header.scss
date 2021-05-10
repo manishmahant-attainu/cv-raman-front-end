@@ -2,15 +2,13 @@
   &__list {
     display: flex;
     list-style: none;
-    padding-inline-start: .625rem;
+    padding-inline-start: 0;
     &--item {
-      margin: .5rem 1rem 0 0;
-      height: 2rem;
-      padding: .25rem;
-      text-align: center;
+      padding: 1rem;
       &-link {
         color: #1fab89;
         text-decoration: none;
+        font-size: 2rem;
         &:visited {
           color: #1fab89;
         }
