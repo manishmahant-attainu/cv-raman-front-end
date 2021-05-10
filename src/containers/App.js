@@ -6,13 +6,6 @@ import Layout from './Layout';
 
 const App = () => {
 
-    //Is the way to access the route
-    //Another is defining the routes
-
-
-    //Reaming things:
-    // 1. Dynamic Routing
-    // 2. Programatical Routing
     return (
         <BrowserRouter>
             <Layout title="hello routes">
