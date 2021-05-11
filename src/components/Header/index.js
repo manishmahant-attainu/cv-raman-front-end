@@ -10,16 +10,16 @@ const Header = (props) => {
             <nav className="main-nav">
                 <ul className="main-nav__list">
                     <li className="main-nav__list--item">
-                        <Link className="main-nav__list--item-link" to={PATHS.HOME}>Home</Link>
+                        <Link className="main-nav__list--item-link btn" to={PATHS.HOME}>Home</Link>
                     </li>
                     <li className="main-nav__list--item">
-                        <Link className="main-nav__list--item-link" to={PATHS.USERS}>Users</Link>
+                        <Link className="main-nav__list--item-link btn" to={PATHS.USERS}>Users</Link>
                     </li>
                     <li className="main-nav__list--item">
-                        <Link className="main-nav__list--item-link" to={PATHS.PRODUCTS}>Products</Link>
+                        <Link className="main-nav__list--item-link btn" to={PATHS.PRODUCTS}>Products</Link>
                     </li>
                     <li className="main-nav__list--item">
-                        <Link className="main-nav__list--item-link" to="/login">Login</Link>
+                        <Link className="main-nav__list--item-link btn" to="/login">Login</Link>
                     </li>
                 </ul>
             </nav>

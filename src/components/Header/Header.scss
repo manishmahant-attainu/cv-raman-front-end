@@ -1,10 +1,13 @@
 .main-nav {
+  
   &__list {
     display: flex;
     list-style: none;
     padding-inline-start: 0;
+    
     &--item {
       padding: 1rem;
+
       &-link {
         color: #1fab89;
         text-decoration: none;
