@@ -1,39 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { connect } from 'react-redux';
 import { PATHS } from '../../config/webPath';
+import userActions from '../../actions/userActions';
 import './Users.css';
 
 const Users = (props) => {
 
-  const [state, setState] = useState({
-    time: null,
-    users: [], //to hold all the users
-    userInfo: null, //to hold the info of single user
-  });
-  const fetchUser = (id) => {
-    const path = id ?
-      `https://jsonplaceholder.typicode.com/users/${id}` :
-      'https://jsonplaceholder.typicode.com/users';
+  const [ time, setTime ] = useState(null);
 
+  const { dispatch } = props;
+  const fetchUser = useCallback((id) => {
+    const path = 'https://jsonplaceholder.typicode.com/users';
     fetch(path)
       .then(res => res.json())
       .then(data => {
-        if (id) {
-          setState((s)=>{
-            return { ...s, userInfo: data }
-          })
-        } else {
-          setState((s)=>({ ...s, users: data }))
-        }
+        dispatch(userActions.userList(data));
       })
-  }
+  },[ dispatch ]);
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, [fetchUser]);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setState((s)=>({ ...s, time: (new Date()).toLocaleTimeString() }))
+      setTime((new Date()).toLocaleTimeString())
     }, 1000);
     return () => clearInterval(timer);
   }, []);
@@ -42,14 +33,13 @@ const Users = (props) => {
     props.history.push(`${PATHS.USERS}/${id}`);
   }
 
-
   return (
     <>
-      <h1>Users: {state.time}</h1>
+      <h1>Users: {time}</h1>
       <div className="container">
         <div className="user-container">
           {
-            state.users.map((user, index) => {
+            props.users.map((user, index) => {
               return (
                 <div
                   className="profile-card"
@@ -66,6 +56,8 @@ const Users = (props) => {
       </div>
     </>
   )
-}
+};
 
-export default Users;
+const mapStateToProps = (state) => ({users: state.users});
+
+export default connect(mapStateToProps)(Users);

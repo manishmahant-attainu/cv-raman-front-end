@@ -1,15 +1,18 @@
 import { connect } from 'react-redux';
-import { decrementAction } from '../../actions';
+import counterActions from '../../actions/counterActions';
 const Products = (props) => {
     console.log(props);
     return (
         <>
             <h1>Products: {props.count}</h1>
-            <button
-                onClick={()=>props.dispatch(decrementAction())}
-            >
-                Buy
-            </button>
+            {
+                props.count > 0 &&
+                <button
+                    onClick={()=>props.dispatch(counterActions.decrement())}
+                >
+                    Buy
+                </button>
+            }
         </>
     )
 };

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { decrementAction, incrementAction } from '../../actions';
+import counterActions from '../../actions/counterActions';
 
 // function authHoc() {
 //     const isAuth = true;
@@ -19,26 +19,14 @@ class Home extends Component {
 
     render() { 
         console.log(this.props);
+        const { decrement, increment } = counterActions;
         return (
             <>
                 <h1>Home</h1>
-                
                 <div>
-                    <button
-                        onClick={()=>this.props.dispatch({
-                            type: 'data',
-                            payload: {name: "CV Raman"}
-                        })}
-                        className="btn"
-                    >
-                        Data Dispatch
-                    </button>
-                </div>
-                <br />
-                <div>
-                    <button onClick={()=>this.props.dispatch(decrementAction())} className="btn">-</button>
+                    <button onClick={()=>this.props.dispatch(decrement())} className="btn">-</button>
                     <label>Count: {this.props.count}</label>
-                    <button onClick={()=>this.props.dispatch(incrementAction())} className="btn">+</button>
+                    <button onClick={()=>this.props.dispatch(increment())} className="btn">+</button>
                 </div>
             </>
         )
