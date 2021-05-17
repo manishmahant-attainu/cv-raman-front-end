@@ -5,7 +5,7 @@ const counterActions = {
         type: counterType.increment,
         payload
     }),
-    decrementAction: payload => ({
+    decrement: payload => ({
         type: counterType.decrement,
         payload
     }),
