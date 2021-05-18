@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { PATHS } from '../../config/webPath';
 import userActions from '../../actions/userActions';
@@ -9,18 +9,10 @@ const Users = (props) => {
   const [ time, setTime ] = useState(null);
 
   const { dispatch } = props;
-  const fetchUser = useCallback((id) => {
-    const path = 'https://jsonplaceholder.typicode.com/users';
-    fetch(path)
-      .then(res => res.json())
-      .then(data => {
-        dispatch(userActions.userList(data));
-      })
-  },[ dispatch ]);
 
   useEffect(() => {
-    fetchUser();
-  }, [fetchUser]);
+    dispatch(userActions.listing());
+  }, [dispatch]);
 
   useEffect(() => {
     const timer = setInterval(() => {

@@ -6,6 +6,7 @@ import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 
 import store from './store';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 //1. there should be just one store for 1 application
 //2. react component state is lost when component unmounts but redux state is only lost when page is reloaded.
