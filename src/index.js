@@ -4,13 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-//1. there should be just one store for 1 application
-//2. react component state is lost when component unmounts but redux state is only lost when page is reloaded.
-
 ReactDOM.render(
-  <React.StrictMode>
-      <App/>
-  </React.StrictMode>,
+  <App/>,
   document.getElementById('roots')
 );
 
