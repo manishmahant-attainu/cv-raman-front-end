@@ -1,0 +1,19 @@
+{
+    "eslint.trace.server": "messages",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": false,
+    "eslint.alwaysShowStatus": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "eslint.format.enable": false,
+    "css.lint.duplicateProperties": "error",
+    "less.lint.duplicateProperties": "error",
+    "scss.lint.duplicateProperties": "error",
+    "diffEditor.ignoreTrimWhitespace": true,
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": true
+  }
+  
