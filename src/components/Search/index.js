@@ -1,7 +1,7 @@
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 
-import useStyles from './SearchStyles';
+import useStyles from './SearchStyle';
 
 const Search = () => {
   const classes = useStyles();

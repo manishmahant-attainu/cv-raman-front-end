@@ -1,14 +1,16 @@
 import Footer from '../../components/Footer';
 import AppNavBar from '../../components/AppNavBar';
-import Box from '@material-ui/core/Box';
+import Loader from '../../components/Loader';
 
 const Layout = ({children}) => {
+
   return (
-    <Box>
+    <>
+      <Loader />
       <AppNavBar />
       {children}
       <Footer />
-    </Box>
+    </>
   )
 };
 
