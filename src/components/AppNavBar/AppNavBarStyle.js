@@ -14,10 +14,7 @@ const AppNavBarStyle = makeStyles((theme) => ({
     },
   },
   sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
+    display: 'flex',
   },
   sectionMobile: {
     display: 'flex',
