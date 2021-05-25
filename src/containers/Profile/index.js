@@ -9,6 +9,21 @@ import useStyle from "./ProfileStyle";
 import { Redirect } from "react-router-dom";
 import PATHS from "../../config/webPath";
 
+/**
+ * issues: On reload profile navigates to Home
+ */
+
+/**
+  // function authHoc() {
+  //   const isAuth = true;
+  //   return (WrappedComponent) => {
+  //     return () => {
+  //       return <WrappedComponent isAuth={isAuth} />
+  //     }
+  //   }
+  // }
+ */
+
 const Profile = (props) => {
 
   const auth = useSelector(state => state.auth);
@@ -28,11 +43,11 @@ const Profile = (props) => {
             alignItems="center"
           >
             <Card className={classes.card}>
-              <CardMedia
+              {userInfo.imageUrl && <CardMedia
                 className={classes.cardMedia}
                 image={userInfo.imageUrl}
                 title={userInfo.fullName}
-              />
+              />}
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
                   {userInfo.fullName}

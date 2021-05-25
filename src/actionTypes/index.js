@@ -3,7 +3,8 @@ export const searchTypes = {
 };
 
 export const profileTypes = {
-  getDetails: 'profile/PROFILE_GET_DETAILS',
+  getUserInfo: 'profile/PROFILE_GET_DETAILS_CUSTOM',
+  getDetails: 'profile/PROFILE_GET_DETAILS_GOOGLE',
   removeDetails: 'profile/PROFILE_REMOVE_DETAILS',
 };
 
