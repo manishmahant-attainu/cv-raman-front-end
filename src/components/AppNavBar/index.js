@@ -11,7 +11,7 @@ import Search from '../Search';
 
 import useStyles from './AppNavBarStyle';
 import PATHS from '../../config/webPath';
-import AuthButtons from '../AuthButtons';
+// import AuthButtons from '../AuthButtons';
 import CustomAuth from '../CustomAuth';
 
 export default function AppNavBar() {

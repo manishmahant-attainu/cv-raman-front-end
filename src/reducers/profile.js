@@ -1,6 +1,5 @@
 import { profileTypes } from '../actionTypes';
 
-const storedInfo = JSON.parse(localStorage.getItem('profileInfo')) || {}
 const initialState = {
   _id: "",
   email: "",
@@ -9,12 +8,12 @@ const initialState = {
   googleId: "",
   imageUrl: "",
   fullName: "",
-  ...storedInfo
 };
 
 
 const profile = (state, action) => {
-  state = state?.email ? state : initialState;
+  const storedInfo = JSON.parse(localStorage.getItem('profileInfo')) || {}
+  state = state?.email ? state : { ...initialState,...storedInfo };
   switch (action.type) {
     case profileTypes.getDetails: {
       const userData = {
@@ -38,15 +37,7 @@ const profile = (state, action) => {
     }
     case profileTypes.removeDetails: {
       localStorage.removeItem('profileInfo');
-      return {
-        _id: "",
-        email: "",
-        firstName: "",
-        lastName: "",
-        googleId: "",
-        imageUrl: "",
-        fullName: "",
-      };
+      return initialState;
     }
     default:
       return state;
