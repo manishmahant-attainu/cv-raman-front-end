@@ -33,7 +33,10 @@ const DummyModal = (props) => {
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = useState(getModalStyle);
 
-  const { open, close } = props;
+  const { open, close, message, title } = props;
+
+  const shortDec = title || 'Text in a modal';
+  const desc = message || 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula.'
 
   return (
     <div>
@@ -44,9 +47,9 @@ const DummyModal = (props) => {
         aria-describedby="dummy-modal-description"
       >
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="dummy-modal-title">Text in a modal</h2>
+          <h2 id="dummy-modal-title">{shortDec}</h2>
           <p id="dummy-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            {desc}
           </p>
         </div>
       </Modal>

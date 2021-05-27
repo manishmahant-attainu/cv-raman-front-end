@@ -56,7 +56,7 @@ export default function Login(props) {
 
   useEffect(() => {
     if(auth) {
-      redirect(PATHS.PROFILE);
+      redirect(PATHS.HOME);
     }
   }, [auth, redirect]);
 
