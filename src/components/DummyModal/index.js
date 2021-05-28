@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
@@ -28,18 +28,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DummyModal = (props) => {
+const DummyModal = React.forwardRef((props,ref) => {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = useState(getModalStyle);
 
-  const { open, close, message, title } = props;
+  const { open, close, message, title, headProp } = props;
 
   const shortDec = title || 'Text in a modal';
   const desc = message || 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula.'
 
   return (
-    <div>
+    <div ref={ref}>
       <Modal
         open={open}
         onClose={close}
@@ -47,7 +47,7 @@ const DummyModal = (props) => {
         aria-describedby="dummy-modal-description"
       >
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="dummy-modal-title">{shortDec}</h2>
+          <h2 ref={headProp} id="dummy-modal-title">{shortDec}</h2>
           <p id="dummy-modal-description">
             {desc}
           </p>
@@ -55,5 +55,5 @@ const DummyModal = (props) => {
       </Modal>
     </div>
   );
-}
+})
 export default DummyModal;

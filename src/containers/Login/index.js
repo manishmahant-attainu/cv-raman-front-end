@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link as RouteLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
@@ -46,23 +46,43 @@ export default function Login(props) {
   const auth = useSelector(state => state.auth);
   const redirect = props.history.replace;
 
-  const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
-  const [ remember, setRemember ] = useState(false);
-
   const [ open, setOpen ] = useState(false);
 
   const [ errors, setErrors ] = useState(defaultErrors);
+
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const rememberRef = useRef(null);
+  const dummyModalRef = useRef(null);
+  const headPropRef = useRef(null);
+  const submitRef = React.createRef(null);
+
+  const formElement = (element) => {
+    console.log(element);
+    console.log(emailRef.current);
+    console.log(dummyModalRef.current);
+    console.log(headPropRef.current);
+  }
 
   useEffect(() => {
     if(auth) {
       redirect(PATHS.HOME);
     }
+    passwordRef.current.focus();
   }, [auth, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const data = {email, password, remember};
+    const data = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      remember: rememberRef.current.checked,
+    }
+    // submitRef.current.style.display = "none";
+    // setTimeout(() => {
+    //   submitRef.current.style.display = "block";
+    // }, 5000);
+
     fetch('http://localhost:5000/api/v1/login',{
       method: 'POST',
       body: JSON.stringify(data),
@@ -108,18 +128,22 @@ export default function Login(props) {
           <Typography component="h1" variant="h5">
             Login
           </Typography>
-          <form onSubmit={submitHandler} className={classes.form} noValidate>
+          <form
+            ref={formElement}
+            onSubmit={submitHandler}
+            className={classes.form}
+            noValidate
+          >
             <TextField
               variant="outlined"
               margin="normal"
               fullWidth
               id="email"
+              ref={emailRef}
               label="Email Address"
               name="email"
               autoComplete="email"
               autoFocus
-              value={email}
-              onChange={(e)=>setEmail(e.target.value)}
             />
             <FormHelperText>{errors?.email?.msg}</FormHelperText>
             <TextField
@@ -130,23 +154,22 @@ export default function Login(props) {
               label="Password"
               type="password"
               id="password"
+              inputRef={passwordRef}
               autoComplete="current-password"
-              value={password}
-              onChange={(e)=>setPassword(e.target.value)}
             />
             <FormHelperText>{errors?.password?.msg || errors?.invalid?.msg}</FormHelperText>
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={remember}
+                  inputRef={rememberRef}
                   value="remember"
                   color="primary"
-                  onChange={(e)=>setRemember(e.target.checked)}
                 />
               }
               label="Remember me"
             />
             <Button
+              ref={submitRef}
               type="submit"
               fullWidth
               variant="contained"
@@ -170,7 +193,7 @@ export default function Login(props) {
           </form>
         </div>
       </Container>
-      <DummyModal open={open} close={closeSignUp} />
+      <DummyModal headProp={headPropRef} ref={dummyModalRef} open={open} close={closeSignUp} />
     </>
   );
 }
