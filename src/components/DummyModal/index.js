@@ -56,5 +56,5 @@ const DummyModal = React.forwardRef((props,ref) => {
     </div>
   );
 });
-DummyModal.displayName = DummyModal;
+DummyModal.displayName = 'DummyModal';
 export default DummyModal;
