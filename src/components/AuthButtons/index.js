@@ -25,17 +25,17 @@ const AuthButtons = () => {
       dispatch(authAction.logout());
       dispatch(profileAction.removeDetails());
     }
-  }
+  };
 
   const onLogout = () => {
     dispatch(authAction.logout());
     dispatch(profileAction.removeDetails());
-  }
+  };
 
   return (
     <>
-    {
-      auth &&
+      {
+        auth &&
       <>
         <IconButton
           component={Link}
@@ -66,9 +66,9 @@ const AuthButtons = () => {
           )}
         />
       </>
-    }
-    {
-      !auth &&
+      }
+      {
+        !auth &&
       <GoogleLogin
         clientId={googleConfig.clientId}
         onSuccess={onLogin}
@@ -76,22 +76,22 @@ const AuthButtons = () => {
         buttonText="Login"
         isSignedIn={true}
         render={renderProps => (
-        <IconButton
-          aria-label="login user"
-          aria-controls="primary-search-login-menu"
-          aria-haspopup="true"
-          color="inherit"
-          onClick={renderProps.onClick}
-          disabled={renderProps.disabled}
-          size="small"
-        >
+          <IconButton
+            aria-label="login user"
+            aria-controls="primary-search-login-menu"
+            aria-haspopup="true"
+            color="inherit"
+            onClick={renderProps.onClick}
+            disabled={renderProps.disabled}
+            size="small"
+          >
           Login
-        </IconButton>
-      )}
+          </IconButton>
+        )}
       />
-    }
+      }
     </>
-  )
+  );
 };
 
 export default AuthButtons;

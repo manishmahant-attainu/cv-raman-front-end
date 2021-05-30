@@ -11,7 +11,7 @@ const videoAction = {
       maxResults: 50,
       key: googleConfig.apiKey
     });
-    const path = `https://www.googleapis.com/youtube/v3/search?${params}`
+    const path = `https://www.googleapis.com/youtube/v3/search?${params}`;
     return fetch(path)
       .then(res=>res.json())
       .then(data=>{

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme)=>({
     paddingBottom: theme.spacing(8),
   },
   card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
   cardContent: {
     flexGrow: 1,
@@ -42,7 +42,7 @@ const VideoDetails = (props) => {
   const auth = useSelector(state => state.auth);
   const [videoDetails, setVideoDetails] = useState({});
 
-  const videoSrc = `https://www.youtube.com/embed/${videoId}`
+  const videoSrc = `https://www.youtube.com/embed/${videoId}`;
 
   useEffect(() => {
     if(!auth) redirect(PATHS.HOME);
@@ -53,7 +53,7 @@ const VideoDetails = (props) => {
         part: 'snippet',
         key: googleConfig.apiKey
       });
-      const path = `https://www.googleapis.com/youtube/v3/videos?${params}`
+      const path = `https://www.googleapis.com/youtube/v3/videos?${params}`;
       fetch(path)
         .then(res => res.json())
         .then(data => {
@@ -65,7 +65,7 @@ const VideoDetails = (props) => {
         })
         .catch(() => dispatch(loaderAction.stop()));
     }
-  }, [auth, videoId, redirect, dispatch])
+  }, [auth, videoId, redirect, dispatch]);
 
   return (
     <Container className={classes.cardGrid} maxWidth="xl">

@@ -36,7 +36,7 @@ const DummyModal = React.forwardRef((props,ref) => {
   const { open, close, message, title, headProp } = props;
 
   const shortDec = title || 'Text in a modal';
-  const desc = message || 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula.'
+  const desc = message || 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula.';
 
   return (
     <div ref={ref}>
@@ -55,5 +55,6 @@ const DummyModal = React.forwardRef((props,ref) => {
       </Modal>
     </div>
   );
-})
+});
+DummyModal.displayName = DummyModal;
 export default DummyModal;

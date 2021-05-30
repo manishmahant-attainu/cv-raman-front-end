@@ -21,7 +21,7 @@ const Search = () => {
     timer.current = setTimeout(() => {
       dispatch(videoAction.list(e.target.value));
     }, 600);
-  }
+  };
 
   return (
     <div className={classes.search}>
@@ -39,7 +39,7 @@ const Search = () => {
         inputProps={{ 'aria-label': 'search' }}
       />
     </div>
-  )
+  );
 };
 
 export default Search;

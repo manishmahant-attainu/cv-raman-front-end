@@ -13,7 +13,7 @@ const App = () => {
             routes.map((route,rk) => {
               return (
                 <Route key={rk} {...route} />
-              )
+              );
             })
           }
         </Switch>
@@ -21,6 +21,6 @@ const App = () => {
     </BrowserRouter>
 
   );
-}
+};
 
 export default App;

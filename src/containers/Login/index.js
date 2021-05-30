@@ -62,7 +62,7 @@ export default function Login(props) {
     console.log(emailRef.current);
     console.log(dummyModalRef.current);
     console.log(headPropRef.current);
-  }
+  };
 
   useEffect(() => {
     if(auth) {
@@ -77,7 +77,7 @@ export default function Login(props) {
       email: emailRef.current.value,
       password: passwordRef.current.value,
       remember: rememberRef.current.checked,
-    }
+    };
     // submitRef.current.style.display = "none";
     // setTimeout(() => {
     //   submitRef.current.style.display = "block";
@@ -90,32 +90,32 @@ export default function Login(props) {
         'Content-Type': 'application/json'
       },
     })
-    .then(resp => resp.json())
-    .then(r => {
-      if(r.errors) {
-        setErrors(r.errors);
+      .then(resp => resp.json())
+      .then(r => {
+        if(r.errors) {
+          setErrors(r.errors);
+          dispatch(authAction.logout());
+        } else {
+          setErrors(defaultErrors);
+          dispatch(authAction.login());
+          dispatch(profileAction.getUserInfo(r));
+        }
+      })
+      .catch(err=>{
+        console.log(err);
         dispatch(authAction.logout());
-      } else {
-        setErrors(defaultErrors);
-        dispatch(authAction.login());
-        dispatch(profileAction.getUserInfo(r));
-      }
-    })
-    .catch(err=>{
-      console.log(err);
-      dispatch(authAction.logout());
-    })
-  }
+      });
+  };
 
   const openSignUp = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setOpen(true);
-  }
+  };
 
-  const closeSignUp = (e) => {
+  const closeSignUp = () => {
     setOpen(false);
-  }
+  };
 
   return (
     <>
@@ -186,7 +186,7 @@ export default function Login(props) {
                   variant="body2"
                   onClick={openSignUp}
                 >
-                  {"Don't have an account? Sign Up"}
+                  {'Don\'t have an account? Sign Up'}
                 </Link>
               </Grid>
             </Grid>

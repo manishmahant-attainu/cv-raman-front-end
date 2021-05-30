@@ -1,6 +1,6 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core';
 
-const VideoCardStyle = makeStyles((theme) => ({
+const VideoCardStyle = makeStyles(() => ({
   card: {
     height: '100%',
     display: 'flex',

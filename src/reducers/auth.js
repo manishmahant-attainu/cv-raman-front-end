@@ -9,17 +9,17 @@ const auth = (state, action) => {
   state = state || !!localStorage.getItem('isAuth');
 
   switch (action.type) {
-    case authTypes.login: {
-      localStorage.setItem('isAuth',true);
-      return true;
-    }
-    case authTypes.logout: {
-      localStorage.removeItem('isAuth');
-      localStorage.removeItem('profileInfo');
-      return false;
-    }
-    default:
-      return state;
+  case authTypes.login: {
+    localStorage.setItem('isAuth',true);
+    return true;
+  }
+  case authTypes.logout: {
+    localStorage.removeItem('isAuth');
+    localStorage.removeItem('profileInfo');
+    return false;
+  }
+  default:
+    return state;
   }
 };
 

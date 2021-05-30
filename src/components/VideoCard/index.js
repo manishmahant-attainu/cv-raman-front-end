@@ -28,7 +28,7 @@ export default function VideoCard(props) {
     const detailPath = PATHS.VIDEO_DETAILS.replace(':id',videoId);
     if(!auth) showError();
     else history.push(detailPath);
-  }
+  };
 
   return (
     <Grid item xs={12} sm={6} md={4} id={videoId}>

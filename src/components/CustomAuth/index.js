@@ -16,12 +16,12 @@ const AuthButtons = () => {
   const onLogout = () => {
     dispatch(authAction.logout());
     dispatch(profileAction.removeDetails());
-  }
+  };
 
   return (
     <>
-    {
-      auth &&
+      {
+        auth &&
       <>
         <IconButton
           component={Link}
@@ -44,9 +44,9 @@ const AuthButtons = () => {
           <ExitToApp />
         </IconButton>
       </>
-    }
-    {
-      !auth &&
+      }
+      {
+        !auth &&
       <IconButton
         component={Link}
         to={PATHS.LOGIN}
@@ -58,9 +58,9 @@ const AuthButtons = () => {
       >
         Login
       </IconButton>
-    }
+      }
     </>
-  )
+  );
 };
 
 export default AuthButtons;
