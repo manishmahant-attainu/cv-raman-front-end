@@ -13,6 +13,7 @@ import useStyles from './AppNavBarStyle';
 import PATHS from '../../config/webPath';
 // import AuthButtons from '../AuthButtons';
 import CustomAuth from '../CustomAuth';
+import LanguageContext from '../../contexts/LanguageContext';
 
 export default function AppNavBar() {
   const classes = useStyles();
@@ -32,7 +33,15 @@ export default function AppNavBar() {
             <YouTube />
           </IconButton>
           <Typography className={classes.title}>
-            <Link component={RouteLink} to={PATHS.HOME} color="inherit">Home</Link>
+            <LanguageContext.Consumer>
+              {({language})=>{
+                return (
+                  <Link component={RouteLink} to={PATHS.HOME} color="inherit">
+                    {language=== 'english' ? 'Home' : 'घर'}
+                  </Link>
+                );
+              }}
+            </LanguageContext.Consumer>
           </Typography>
           <Search />
           <div className={classes.grow} />

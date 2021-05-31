@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
+import ColorContext from '../../contexts/ColorContext';
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -16,8 +17,14 @@ export default function Loader() {
 
   const classes = useStyles();
   return (
-    <Backdrop className={classes.backdrop} open={loader}>
-      <CircularProgress color="inherit" />
-    </Backdrop>
+    <ColorContext.Consumer>
+      {(color)=>{
+        return (
+          <Backdrop className={classes.backdrop} open={loader}>
+            <CircularProgress color={color} />
+          </Backdrop>
+        );
+      }}
+    </ColorContext.Consumer>
   );
 }
