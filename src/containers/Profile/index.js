@@ -9,21 +9,6 @@ import useStyle from './ProfileStyle';
 import { Redirect } from 'react-router-dom';
 import PATHS from '../../config/webPath';
 
-/**
- * issues: On reload profile navigates to Home
- */
-
-/**
-  // function authHoc() {
-  //   const isAuth = true;
-  //   return (WrappedComponent) => {
-  //     return () => {
-  //       return <WrappedComponent isAuth={isAuth} />
-  //     }
-  //   }
-  // }
- */
-
 const Profile = () => {
 
   const auth = useSelector(state => state.auth);

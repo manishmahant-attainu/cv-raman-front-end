@@ -6,8 +6,10 @@ import VideoCard from '../../components/VideoCard';
 import DummyModal from '../../components/DummyModal';
 import useStyles from './HomeStyle';
 import videoAction from '../../actions/videoAction';
+import withAuth from '../../hoc/withAuth';
 
 const Home = (props) => {
+  console.log('Home ==>', props);
   const { dispatch, videos } = props;
   const classes = useStyles();
   const [ open, setOpen ] = useState(false);
@@ -26,6 +28,7 @@ const Home = (props) => {
 
   return (
     <main>
+      {/* <DummyComp /> */}
       <Container className={classes.cardGrid} maxWidth="xl">
         <Grid container spacing={4}>
           {
@@ -47,4 +50,4 @@ const Home = (props) => {
 
 const mapStateToProps = ({videos}) => ({videos});
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(withAuth(Home));
